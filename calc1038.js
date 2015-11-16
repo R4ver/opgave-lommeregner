@@ -8,6 +8,9 @@ class Calc {
       return val.x + val.y;
    }
    
+   static subtraction(val) {
+      return val.x - val.y;
+   }
 }
 
 const calcThis = new Calc(5, 5);
