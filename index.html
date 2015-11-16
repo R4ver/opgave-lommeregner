@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Claculator 1038</title>
+        
+        <style>
+            * {
+                outline: 0;
+            }
+
+            body {
+                color: #272727;
+                font-family: Helvetica, Arial, sans-serif;
+                font-size: 16px;
+                background-color: #2196F3;
+            }
+
+            #calculator {
+                display: flex;
+                flex-direction: column;
+                justify-content: space-around;
+
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                margin: 0;
+                padding: 16px;
+                
+                text-align: center;
+
+                background-color: #fff;
+
+                -webkit-transform: translate(-50%, -50%);
+                -moz-transform: translate(-50%, -50%);
+                -o-transform: translate(-50%, -50%);
+                transform: translate(-50%, -50%);
+            }
+
+            .calc-options ul {
+                margin: 0;
+                margin-bottom: 16px;
+                padding: 0;
+            }
+
+            .calc-options li label p {
+                margin: 0;
+                padding: 0;
+            }
+
+            .calc-options li {
+                display: inline-block;
+                margin: 8px;
+                padding: 8px;
+            }
+
+            .calc-input input {
+                padding: 8px;
+                font-size: 16px;
+                border: 0px;
+                box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+                -webkit-transition: all .12s ease;
+                -moz-transition: all .12s ease;
+                -o-transition: all .12s ease;
+                transition: all .12s ease;
+            }
+
+            .calc-input input:focus {
+                box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+            }
+
+            #submitCalc {
+                display: inline-block;
+                padding: 8px 16px;
+                color: #fff;
+                text-align: center;
+                text-decoration: none;
+                background-color: #2196F3;
+                box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+                -webkit-transition: all .12s ease;
+                -moz-transition: all .12s ease;
+                -o-transition: all .12s ease;
+                transition: all .12s ease;
+            }
+
+            #submitCalc:hover {
+                box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+            }
+
+            #submitCalc:active {
+                box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+            }
+        </style>
+    </head>
+    <body>
+        
+        <div id="calculator">
+            <div class="calc-options">
+                <form action="">
+                    <ul>
+                        <li><label><p>Addition</p><input type="radio" name="calcOption" value="addition"></label></li>
+                        <li><label><p>Subtraction</p><input type="radio" name="calcOption" value="subtraction"></label></li>
+                        <li><label><p>Multiplication</p><input type="radio" name="calcOption" value="multiplication"></label></li>
+                        <li><label><p>Division</p><input type="radio" name="calcOption" value="division"></label></li>
+                    </ul>
+                </form>
+            </div>
+
+            <div class="calc-input">
+                <input type="text" placeholder="First number">
+                <input type="text" placeholder="Second number">
+                <a href="#" id="submitCalc">Calculate</a>
+            </div>
+        </div>
+
+    </body>
+</html>
