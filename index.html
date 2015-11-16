@@ -1,33 +1,61 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <meta charset="UTF-8">
+
         <title>Claculator 1038</title>
         
         <link rel="stylesheet" href="style.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
         <script src="calc1038.js"></script>
         <script>
-            
+            $(document).ready(function() {
+                $("#submitCalc").click(function() {
+                    var selectedCalc = $("input[type='radio'][name='calcOption']:checked");
+                    var selectedCalcVal = selectedCalc.val();
+                    var valX = $("#valX").val();
+                    var valY = $("#valY").val();
+
+                    if (selectedCalc.length > 0) {
+                        const calcThis = new Calc(valX, valY);
+
+                        // runFunction('Calc.' + selectedCalcVal, [calcThis]);
+                        runFunction("Calc." + selectedCalcVal, [calcThis]);
+
+                    } else {
+                        console.log("Please select calc");
+                    }
+                });
+
+                var runFunction = function(func, arg) {
+                    var fn = window[func];
+                    if ( typeof fn !== 'function' ) 
+                        return
+
+                    fn.apply(window, arg);
+                };
+            });            
         </script>
     </head>
     <body>
         
         <div id="calculator">
-            <div class="calc-options">
-                <form action="">
-                    <ul>
-                        <li><label><p>Addition</p><input type="radio" name="calcOption" value="addition"></label></li>
-                        <li><label><p>Subtraction</p><input type="radio" name="calcOption" value="subtraction"></label></li>
-                        <li><label><p>Multiplication</p><input type="radio" name="calcOption" value="multiplication"></label></li>
-                        <li><label><p>Division</p><input type="radio" name="calcOption" value="division"></label></li>
-                    </ul>
-                </form>
-            </div>
+            <form action="">
+                <div class="calc-options">
+                        <ul>
+                            <li><label><p>Addition</p><input type="radio" name="calcOption" value="addition"></label></li>
+                            <li><label><p>Subtraction</p><input type="radio" name="calcOption" value="subtraction"></label></li>
+                            <li><label><p>Multiplication</p><input type="radio" name="calcOption" value="multiplication"></label></li>
+                            <li><label><p>Division</p><input type="radio" name="calcOption" value="division"></label></li>
+                        </ul>
+                </div>
 
-            <div class="calc-input">
-                <input type="text" placeholder="First number">
-                <input type="text" placeholder="Second number">
-                <a href="#" id="submitCalc">Calculate</a>
-            </div>
+                <div class="calc-input">
+                    <input type="text" id="valX" placeholder="First number">
+                    <input type="text" id="valY" placeholder="Second number">
+                    <a href="#" id="submitCalc">Calculate</a>
+                </div>
+            </form>
         </div>
 
     </body>

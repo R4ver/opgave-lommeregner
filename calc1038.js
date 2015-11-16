@@ -1,3 +1,5 @@
+"use strict";
+
 class Calc {
    constructor(x, y) {
       this.x = x;
@@ -5,7 +7,7 @@ class Calc {
    }
 
    static addition(val) {
-      return val.x + val.y;
+      return +val.x + +val.y;
    }
    
    static subtraction(val) {
