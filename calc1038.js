@@ -11,6 +11,14 @@ class Calc {
    static subtraction(val) {
       return val.x - val.y;
    }
+
+   static multiplication(val) {
+      return val.x * val.y;
+   }
+
+   static division(val) {
+      return val.x / val.y;
+   }
 }
 
 const calcThis = new Calc(5, 5);
