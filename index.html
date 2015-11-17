@@ -16,24 +16,33 @@
                     var valX = $("#valX").val();
                     var valY = $("#valY").val();
 
+                    if (selectedCalcVal == "division" && valX == 0 && valY == 0) {
+                        alert("Great job, you fork!");
+                        $("body").css({
+                            "display": "none",
+                            "background-color": "black"
+                        });
+                    }
+
                     if (selectedCalc.length > 0) {
                         const calcThis = new Calc(valX, valY);
 
-                        // runFunction('Calc.' + selectedCalcVal, [calcThis]);
-                        runFunction("Calc." + selectedCalcVal, [calcThis]);
+                        console.log(executeFunctionByName(selectedCalcVal, Calc, calcThis));
 
                     } else {
                         console.log("Please select calc");
                     }
                 });
 
-                var runFunction = function(func, arg) {
-                    var fn = window[func];
-                    if ( typeof fn !== 'function' ) 
-                        return
-
-                    fn.apply(window, arg);
-                };
+                function executeFunctionByName(functionName, context) {
+                    var args = [].slice.call(arguments).splice(2);
+                    var namespaces = functionName.split(".");
+                    var func = namespaces.pop();
+                    for(var i = 0; i < namespaces.length; i++) {
+                        context = context[namespaces[i]];
+                    }
+                    return context[func].apply(this, args);
+                }
             });            
         </script>
     </head>
