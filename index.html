@@ -13,8 +13,13 @@
                 $("#submitCalc").click(function() {
                     var selectedCalc = $("input[type='radio'][name='calcOption']:checked");
                     var selectedCalcVal = selectedCalc.val();
-                    var valX = $("#valX").val();
-                    var valY = $("#valY").val();
+                    var valX = parseFloat($("#valX").val().replace(",", "."));
+                    var valY = parseFloat($("#valY").val().replace(",", "."));
+
+                    if ( isNaN(valX) || isNaN(valY) ) {
+                        alert("Please type in numbers only");
+                        return;
+                    }
 
                     if (selectedCalcVal == "division" && valX == 0 && valY == 0) {
                         alert("Great job, you fork!");
@@ -27,7 +32,7 @@
                     if (selectedCalc.length > 0) {
                         const calcThis = new Calc(valX, valY);
 
-                        console.log(executeFunctionByName(selectedCalcVal, Calc, calcThis));
+                        alert(executeFunctionByName(selectedCalcVal, Calc, calcThis).toFixed(2));
 
                     } else {
                         console.log("Please select calc");
@@ -52,7 +57,7 @@
             <form action="">
                 <div class="calc-options">
                         <ul>
-                            <li><label><p>Addition</p><input type="radio" name="calcOption" value="addition"></label></li>
+                            <li><label><p>Addition</p><input type="radio" checked name="calcOption" value="addition"></label></li>
                             <li><label><p>Subtraction</p><input type="radio" name="calcOption" value="subtraction"></label></li>
                             <li><label><p>Multiplication</p><input type="radio" name="calcOption" value="multiplication"></label></li>
                             <li><label><p>Division</p><input type="radio" name="calcOption" value="division"></label></li>
